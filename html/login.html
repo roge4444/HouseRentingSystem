@@ -5,6 +5,9 @@
 	<title>login.html</title>
 	<link rel="stylesheet" type="text/css" href="./rent.css">
 	<style type="text/css"></style>
+<script language="JavaScript"><
+
+</script>
 </head>
 
 <body>
@@ -15,15 +18,29 @@
 	<form class="login-form">
       	   <input type="text" placeholder="username"/>
       	   <input type="password" placeholder="password"/>
-      	</form>
-	<p class ="box">
-	    <input type="radio" id="renter" name="rent">
+      	</form >
+	<form id="form1" name="form1" method="post" action=""> 
+ 	 <p class ="box">
+	    <input type="radio" id="renter" name="rent" value="./login-renter.html">
 	    <label for="renter">renter</label>
- 
-	    <input type="radio" id="tenant" name= "rent">
+	    <input type="radio" id="tenant" name= "rent" value="./login-tenant.html">
 	    <label for="tenant">tenant</label>
-	</p>
-	<a href="./login-renter.html"><button>login</button></a>
+	 </p>
+	    <input type="button" name="login" id="login" value="login">
+	 
+	</form>
+	<script language="javascript"> 
+	    document.getElementById('login').onclick = function() { 
+	        var r = document.getElementsByName('rent'); 
+	        var c = r.length; 
+	        for (i = 0; i < c; i++) { 
+	            if (r[i].checked) { 
+	                window.location = r[i].value; 
+	                break; 
+	            } 
+	        } 
+	    }; 
+	</script>
 	<p class="message">Not registered?</p>
 	<a href="./login-tenant.html"><button>register</button></a>
 
