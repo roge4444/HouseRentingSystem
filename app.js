@@ -10,6 +10,13 @@ var users = require('./routes/users');
 
 var app = express();
 
+var Web3 = require("web3");
+var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+var coinbase = web3.eth.coinbase;
+console.log(coinbase);
+console.log(web3.eth.getBalance(coinbase).toNumber());
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
