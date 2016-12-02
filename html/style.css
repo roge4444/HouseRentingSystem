@@ -7,6 +7,14 @@
 body {
   font-family: 'Nunito', sans-serif;
   color: #384047;
+  background: #336666; /* fallback for old browsers */
+  background: -webkit-linear-gradient(right, #336666, #8DC26F);
+  background: -moz-linear-gradient(right, #336666, #8DC26F);
+  background: -o-linear-gradient(right, #336666, #8DC26F);
+  background: linear-gradient(to left, #336666, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 form {

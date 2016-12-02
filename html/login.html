@@ -5,9 +5,6 @@
 	<title>login.html</title>
 	<link rel="stylesheet" type="text/css" href="./rent.css">
 	<style type="text/css"></style>
-<script language="JavaScript"><
-
-</script>
 </head>
 
 <body>
@@ -29,6 +26,9 @@
 	    <input type="button" name="login" id="login" value="login">
 	 
 	</form>
+	<p class="message">Not registered?</p>
+	<input type="button" name="register" id="register" value="register">
+	
 	<script language="javascript"> 
 	    document.getElementById('login').onclick = function() { 
 	        var r = document.getElementsByName('rent'); 
@@ -40,9 +40,20 @@
 	            } 
 	        } 
 	    }; 
+		document.getElementById('register').onclick = function() { 
+	        var r = document.getElementsByName('rent'); 
+	        var c = r.length; 
+	        for (i = 0; i < c; i++) { 
+	            if (r[i].checked) {
+					if(i == 0)
+						window.location = "./register-renter.html";
+					if(i == 1)
+						window.location = "./register-tenant.html";
+	                break; 
+	            } 
+	        } 
+	    }; 
 	</script>
-	<p class="message">Not registered?</p>
-	<a href="./login-tenant.html"><button>register</button></a>
 
 </body>
 </html>
