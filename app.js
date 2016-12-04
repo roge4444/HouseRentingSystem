@@ -10,11 +10,11 @@ var users = require('./routes/users');
 
 var app = express();
 
-var Web3 = require("web3");
+/*var Web3 = require('web3');
 var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 var coinbase = web3.eth.coinbase;
 console.log(coinbase);
-console.log(web3.eth.getBalance(coinbase).toNumber());
+console.log(web3.eth.getBalance(coinbase).toNumber());*/
 
 
 // view engine setup
@@ -31,6 +31,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+
+app.get('/100', function (req, res) {
+	  res.send('Hello world!');
+	});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,5 +53,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

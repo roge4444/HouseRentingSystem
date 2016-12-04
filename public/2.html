@@ -1,0 +1,68 @@
+﻿
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script language="javascript">
+setInterval("fuck()",40)
+function fuck()
+{
+	//document.getElementById("fuck").value = "FUCK";
+	/*var votebutton = document.createElement("input");    // 生成input对象 
+    votebutton.type = "text";                                       // 生成input属性value 
+    votebutton.value = "FUCK"; 
+    votebutton.name = "99";
+	votebutton.size = 3;*/
+	//document.body.appendChild(votebutton);
+	
+	//document.body.innerHTML += num;
+	//document.body.innerHTML += "<font size=20 color=red><b>FUCK</b></font>";
+	//var color = pick();
+	//var addf = "<font size=10 color=\"#"+color+"\"><b>↑FUCK↑</b></font>";
+	//document.body.innerHTML += addf;
+	for(var i = 0 ; i < 4 ; i++){
+		var color = pick();
+		var add = "<font size=7 color=\"#"+color+"\"><b>↑FUCK↑</b></font>";
+		document.body.innerHTML += add;
+	}
+	document.body.innerHTML += "<br>";
+	if(document.body.innerHTML.length >= 3000){
+		document.body.innerHTML = document.body.innerHTML.substr(document.body.innerHTML.search("r>")+2);
+	}
+		//parent.scroll(0,9999999);
+}
+function pick() {
+	var color = "";
+	for(i = 0 ; i < 6 ; i++){
+		var num = Math.floor(Math.random()*16);
+		switch(num){
+			case 10:
+				color += "A";
+				break;
+			case 11:
+				color += "B";
+				break;
+			case 12:
+				color += "C";
+				break;
+			case 13:
+				color += "D";
+				break;
+			case 14:
+				color += "E";
+				break;
+			case 15:
+				color += "F";
+				break;
+			default:
+				color += num.toString();
+				break;
+		}
+	}
+	return color;
+}
+</script>
+</head>
+<body>
+</body>
+</html>

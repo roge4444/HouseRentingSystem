@@ -3,6 +3,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h2 {font-size: 30px;display : inline}
 a {
   color: #00B7FF;
 }

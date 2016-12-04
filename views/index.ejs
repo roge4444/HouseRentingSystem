@@ -1,14 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-  	<meta http-equiv="refresh" content="3;url=./"/>
+  	<!--<meta http-equiv="refresh" content="3;url=./"/>-->
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script> 
+    <script type="text/javascript" src="js/animateBackground-plugin.js"></script> 
+  
   </head>
   <body>
+  <div class="form">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <p>My Coin: <font size=20><b> <%= abc %></b></font></p>
+    <font size=3>My Account: <b><h2 id="id"></h2></b></font><br>
+    <font size=3>My Ether: <b><h2 id="coin"></h2></b></font>
+ 
+    
+    <SCRIPT language="JavaScript">
+    	/*function abc_abc()
+    	{
+    		document.getElementById('coin').value += "AACCCCASDASD";
+    	}
+    	function hi_and_bye()
+    {
+    	document.getElementById('coin').value = "ADADAD";
+    }*/
+    
+    
+     var socket = io.connect('http://140.119.134.210:3000');
+     
+     socket.on('index', function(data) {
+            //$('#coin').text(data.coin);
+            $('#id').text(data.id);
+            countUp($('#coin'),data.coin,0,500,11);
+     });
+     
+     function countUp(elem, endVal, startVal, duration, decimal) {  
+	    var startTime = 0;
+	    var dec = Math.pow(10, decimal);
+	    var progress,value;
+	    function startCount(timestamp) {
+	        if(!startTime) startTime = timestamp;
+	        progress = timestamp - startTime;
+	        value = startVal + (endVal - startVal) * (progress / duration);
+	        value = (value > endVal) ? endVal : value;
+	        value = Math.floor(value*dec) / dec;
+	        elem.text(value.toFixed(decimal));
+	        progress < duration && requestAnimationFrame(startCount)
+	    }
+	    requestAnimationFrame(startCount)
+	}
+	
+	socket.on('disconnect',function(){
+    
+	});
+	     
+    
+    
+    	
+   </SCRIPT>
     
   </body>
 </html>
