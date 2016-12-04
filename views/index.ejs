@@ -13,7 +13,10 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <font size=3>My Account: <b><h2 id="id"></h2></b></font><br>
-    <font size=3>My Ether: <b><h2 id="coin"></h2></b></font>
+    <font size=3>My Ether: <b><h2 id="coin"></h2></b></font><br><br>
+    
+    <font size=3>My Account2: <b><h2 id="id2"></h2></b></font><br>
+    <font size=3>My Ether2: <b><h2 id="coin2"></h2></b></font>
  
  	<h3>帳戶登入</h3>
 	<input id="whoami" type="text" placeholder="請輸入您的位址">
@@ -60,6 +63,8 @@
             //$('#coin').text(data.coin);
             $('#id').text(data.id);
             countUp($('#coin'),data.coin,0,500,11);
+            $('#id2').text(data.id2);
+            countUp($('#coin2'),data.coin2,0,500,11);
      });
      
      function countUp(elem, endVal, startVal, duration, decimal) {  
