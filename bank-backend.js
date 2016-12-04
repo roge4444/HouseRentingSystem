@@ -1,27 +1,24 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+// 用於處理路徑
+var path = require('path')
 
-//import 同目錄的 eventEmitter.js
+// import 同目錄的 eventEmitter.js
 var eventEmitter = require('./eventEmitter.js')
 
 // import 同目錄的 web3.js
 var web3 = require('./web3.js')
 var eth = web3.eth
 
-//import 同目錄的 bank
+// import 同目錄的 bank
 var bank = require('./bank.js')
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+// Express.js
+var express = require('express')
+var app = express()
 
-var app = express();
+// 讓 req 有 body
+var bodyParser = require('body-parser')
 
-
-//使 static 中的檔案能被讀取
+// 使 static 中的檔案能被讀取
 app.use(express.static(path.resolve(__dirname, 'static')))
 
 // 註冊 body-parser 處理 body stream
@@ -153,53 +150,15 @@ app.post('/transfer', function (req, res) {
 	})
 })
 
-/*var Web3 = require('web3');
-var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-var coinbase = web3.eth.coinbase;
-console.log(coinbase);
-console.log(web3.eth.getBalance(coinbase).toNumber());*/
+// 網址為根目錄時，預設回傳 index.html
+app.get('/', function (req, res) {
+	res.sendFile(path.resolve(__dirname, 'static', 'index.html'))
+})
 
+// 沒有對應到任何 path 時，回傳 404
+app.use(function (req, res) {
+	res.status(404).send('not found')
+})
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-app.use('/users', users);
-
-app.get('/100', function (req, res) {
-	  res.send('Hello world!');
-	});
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-
-
-
-
-
-module.exports = app;
+// 聆聽 3030 port
+app.listen(3030)

@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
-  	<!--<meta http-equiv="refresh" content="3;url=./"/>-->
+  	<meta charset="utf-8">
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script src="/socket.io/socket.io.js"></script>
@@ -15,6 +15,33 @@
     <font size=3>My Account: <b><h2 id="id"></h2></b></font><br>
     <font size=3>My Ether: <b><h2 id="coin"></h2></b></font>
  
+ 	<h3>帳戶登入</h3>
+	<input id="whoami" type="text" placeholder="請輸入您的位址">
+	<button id="whoamiButton">登入</button>
+	<hr>
+	<h3>帳戶狀態</h3>
+	<h5 id="ethBalance">以太帳戶餘額 (wei): </h5>
+	<h5 id="bankBalance">銀行合約餘額 (wei): </h5>
+	<hr>
+	<h3>存款</h3>
+	<input id="deposit" type="number" placeholder="請輸入存款額度 (ether)">
+	<button id="depositButton">執行</button>
+	<hr>
+	<h3>提款</h3>
+	<input id="withdraw" type="number" placeholder="請輸入提款額度 (ether)">
+	<button id="withdrawButton">執行</button>
+	<hr>
+	<h3>轉帳</h3>
+	<input id="transferTo" type="text" placeholder="請輸入轉帳對象">
+	<input id="transferEtherValue" type="number" placeholder="請輸入轉帳額度 (ether)">
+	<button id="transferButton">執行</button>
+	<hr>
+	<h3>活動紀錄</h3>
+	<pre id="logger"></pre>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/index.js"></script>
+ 
+ 	
     
     <SCRIPT language="JavaScript">
     	/*function abc_abc()
