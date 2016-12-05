@@ -28,10 +28,14 @@ var server = http.createServer(app);
 var Web3 = require('web3');
 var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 var coinbase = web3.eth.coinbase;
+var id2 = web3.eth.accounts[1];
+var eth = web3.eth;
 console.log(coinbase);
 console.log(web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether'));
 
+
 var io = require('socket.io').listen(server);  //socket.io
+
 
 
 io.sockets.on('connection', function(socket) {  
@@ -39,19 +43,17 @@ io.sockets.on('connection', function(socket) {
     
     socket.emit('index', {
 		'id': coinbase,
-	    'coin': web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether'),
-	    'id2': web3.eth.accounts[1],
-	    'coin2': web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]).toString(),'ether')
+	    'coin': web3.fromWei(eth.getBalance(coinbase).toString(),'ether'),
+	    'id2': id2,
+	    'coin2': web3.fromWei(eth.getBalance(id2).toString(),'ether')
 	});
     
     var refresh = setInterval(function(){
-    	//console.log('ID: '+coinbase);
-    	//console.log('Coin: '+web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether'));
     	socket.emit('index', {
 	        'coin': web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether'),
-	        'coin2': web3.fromWei(web3.eth.getBalance(web3.eth.accounts[1]).toString(),'ether')
+	        'coin2': web3.fromWei(web3.eth.getBalance(id2).toString(),'ether')
 	    });
-    },3000);
+    },5000);
     
     socket.on('disconnect', function () {
         console.log("User disconnected");
