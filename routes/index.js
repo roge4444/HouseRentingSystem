@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 /*title: 'Express' , abc: web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether')*/
 
 router.get('/register', function(req, res) {
-    res.render('register', { });
+    res.render('register', { error : req.err });
 });
 
 router.post('/register', function(req, res, next) {
