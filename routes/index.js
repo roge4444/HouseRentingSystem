@@ -7,13 +7,13 @@ var router = express.Router();
 //var io = require('socket.io').listen(server);
 
 
-/*var Web3 = require("web3");
+var Web3 = require("web3");
 var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-var coinbase = web3.eth.coinbase;*/
+var coinbase = web3.eth.coinbase;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { user : req.user });
+  res.render('index', { title: 'Express',user : req.user });
 });
 
 /*title: 'Express' , abc: web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether')*/
