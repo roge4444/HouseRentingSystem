@@ -1,30 +1,40 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport');
+var Account = require('../models/account');
+var router = express.Router();
 
 //var io = require('socket.io').listen(server);
 
 
-var Web3 = require("web3");
+/*var Web3 = require("web3");
 var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-var coinbase = web3.eth.coinbase;
+var coinbase = web3.eth.coinbase;*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' , abc: web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether'), user : req.user });
+  res.render('index', { user : req.user });
 });
+
+/*title: 'Express' , abc: web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether')*/
 
 router.get('/register', function(req, res) {
     res.render('register', { });
 });
 
-router.post('/register', function(req, res) {
+router.post('/register', function(req, res, next) {
     Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
         if (err) {
-            return res.render('register', { account : account });
+          return res.render('register', { error : err.message });
         }
 
         passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
+            req.session.save(function (err) {
+                if (err) {
+                    return next(err);
+                }
+                res.redirect('/');
+            });
         });
     });
 });
