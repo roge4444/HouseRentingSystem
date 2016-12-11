@@ -13,8 +13,17 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <font size=3>My Account: <b><h2 id="id"></h2></b></font><br>
-    <font size=3>My Ether: <b><h2 id="coin"></h2></b></font>
- 
+    <font size=3>My Ether: <b><h2 id="coin"></h2></b></font><br>
+
+<% if (user) { %>
+  <p>You are currently logged in as <%= user.username %>  </p>
+  <a href="/logout">Logout</a>
+<% } else { %>
+  <a href="/login">Login</a><br/>
+  <a href="/register">Register</a>
+<% } %>
+
+
     
     <SCRIPT language="JavaScript">
     	/*function abc_abc()
