@@ -8,7 +8,9 @@ var Account = new Schema({
     username: String,
     password: String,
     phonenum: String,
-    address: String
+    address: String,
+    rental: String,
+    size: String
 });
 
 Account.plugin(passportLocalMongoose);

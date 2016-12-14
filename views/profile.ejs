@@ -11,7 +11,10 @@
 <form method="post">
   用户名：<input type="text" name="username" value= <%= user.username %>  /><br />
   密碼確認：<input type="password" name="password" placeholder="Password" class="form-control"/> <br/>
-  把電話修改为：<input type="text" name="phonenum" value= <%= user.phonenum %> /><br />
+  電話：<input type="text" name="phonenum" value= <%= user.phonenum %> /><br />
+  住址：<input type="text" name="address" value= <%= user.address %> /><br />
+  租金：<input type="text" name="rental" value= <%= user.rental %> /><br />
+  坪數：<input type="text" name="size" value= <%= user.size %> /><br />
   <input type="submit" value="更新" />
 </form>
 

@@ -64,7 +64,7 @@ router.get('/profile', function(req, res) {
 router.post('/profile', passport.authenticate('local'),function(req, res, next) {
 
     var condition = {username: req.body.username},
-        update = {$set: {phonenum: req.body.phonenum}};
+        update = {$set: {phonenum: req.body.phonenum,address: req.body.address, rental: req.body.rental ,size: req.body.size}};
         
     Account.update(condition,update, function(err){
         console.log('update error');
