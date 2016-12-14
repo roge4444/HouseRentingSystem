@@ -16,6 +16,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express',user : req.user });
 });
 
+router.get('/abc', function(req, res, next) {
+  res.redirect('/');
+});
+
+
 /*title: 'Express' , abc: web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether')*/
 
 router.get('/register', function(req, res) {
@@ -23,7 +28,7 @@ router.get('/register', function(req, res) {
 });
 
 router.post('/register', function(req, res, next) {
-    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+    Account.register(new Account({ username : req.body.username , phonenum : req.body.phonenum , address : req.body.address }), req.body.password, function(err, account) {
         if (err) {
           return res.render('register', { error : err.message });
         }
@@ -51,6 +56,23 @@ router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
+
+router.get('/profile', function(req, res) {
+    res.render('profile', { user : req.user });
+});
+
+router.post('/profile', passport.authenticate('local'),function(req, res, next) {
+
+    var condition = {username: req.body.username},
+        update = {$set: {phonenum: req.body.phonenum}};
+        
+    Account.update(condition,update, function(err){
+        console.log('update error');
+    });
+    res.send("<a href='/'>更新成功 點擊回主頁</a>");
+});
+
+        
 
 router.get('/ping', function(req, res){
     res.status(200).send("pong!");

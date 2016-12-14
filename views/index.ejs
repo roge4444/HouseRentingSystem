@@ -17,6 +17,8 @@
 
 <% if (user) { %>
   <p>You are currently logged in as <%= user.username %>  </p>
+  <p>Your phonenumber is <%= user.phonenum %>  </p>
+  <p>Your address is <%= user.address %>  </p>
   <a href="/logout">Logout</a>
 <% } else { %>
   <a href="/login">Login</a><br/>
