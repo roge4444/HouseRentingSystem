@@ -74,23 +74,9 @@ router.post('/profile', passport.authenticate('local'),function(req, res, next) 
 
 router.get('/usersList', function(req, res) {
   Account.find(function(err, users) {
-    var userMap = {};
-    var useraddress ={};
-    var username = {};
-
-    users.forEach(function(user) {
-      userMap[user.username] = user.phonenum ;
-      useraddress[user.username] = user.address ;
-      username[user.username] = user.username ;
-    });
-
-    var s = "";
-    for (var key in userMap) {
-    s += key + ": " + userMap[key];
-    s += "<br />";
-    }
+    
    
-    res.render('usersList', { s, userMap : userMap,useraddress : useraddress , username : username});
+    res.render('usersList', { users:users});
   });
 });
 
