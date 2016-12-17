@@ -72,6 +72,33 @@ router.post('/profile', passport.authenticate('local'),function(req, res, next) 
     res.send("<a href='/'>更新成功 點擊回主頁</a>");
 });
 
+router.get('/usersList', function(req, res) {
+  Account.find(function(err, users) {
+    res.render('usersList', {
+              users : users
+            });
+    
+  });
+});
+
+router.get('/findone', function(req, res) {
+  Account.find({},{},function(e,docs){
+      var objKey = Object.keys(docs);
+      objKey.forEach(function(objectid){
+        var items = Object.keys(docs[objectid]);
+        items.forEach(function(itemkey) {
+          var itemvalue =docs[objectid][itemkey];
+          console.log(objectid+': '+itemkey+' = '+itemvalue);
+        })
+      })
+      res.render('findone', {
+          "findone" : docs
+      });
+    });
+});
+
+
+
         
 
 router.get('/ping', function(req, res){
