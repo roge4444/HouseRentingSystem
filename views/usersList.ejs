@@ -7,11 +7,11 @@
    
   </head>
   <body>
-
-  <% for(var i=1; i<users.length; i++) { %>
+  	<a href="/">主頁</a>
+  <% for(var i=0; i<users.length; i++) { %>
        <p> Your name is <%= users[i].username %></p>   
-		<p>	Your address is <%= users[i].address %>  </p>
-		<p>	Your phonenumber is <%= users[i].phonenum %>   </p>
+		<p>	Your 租金 is <%= users[i].rental %>  </p>
+		<p>	Your 坪數 is <%= users[i].size %>   </p>
        
     <% } %>
   </body>

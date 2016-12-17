@@ -64,7 +64,7 @@ router.get('/profile', function(req, res) {
 router.post('/profile', passport.authenticate('local'),function(req, res, next) {
 
     var condition = {username: req.body.username},
-        update = {$set: {phonenum: req.body.phonenum,address: req.body.address, rental: req.body.rental ,size: req.body.size}};
+        update = {$set: {phonenum: req.body.phonenum,address: req.body.address}};
         
     Account.update(condition,update, function(err){
         console.log('update error');
@@ -72,14 +72,28 @@ router.post('/profile', passport.authenticate('local'),function(req, res, next) 
     res.send("<a href='/'>更新成功 點擊回主頁</a>");
 });
 
+router.get('/houseinf', function(req, res) {
+    res.render('houseinf', { user : req.user });
+});
+
+router.post('/houseinf', passport.authenticate('local'),function(req, res, next) {
+
+    var condition = {username: req.body.username},
+        update = {$set: {rental: req.body.rental ,size: req.body.size}};
+        
+    Account.update(condition,update, function(err){
+        console.log('update error');
+    });
+    res.send("<a href='/'>更新成功 點擊回主頁</a>");
+});
+
+
+
 router.get('/usersList', function(req, res) {
   Account.find(function(err, users) {
-    
-   
     res.render('usersList', { users:users});
   });
 });
-
 
 
 router.get('/findone', function(req, res) {
