@@ -8,8 +8,9 @@
     <h1>User List</h1>
  
     <ul>
-      <%= findone %>
-      
+      {{#findone}}
+      <li>{{.}}</li>
+      {{/findone}}
     </ul>
   </body>
 </html>
