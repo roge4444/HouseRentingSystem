@@ -31,7 +31,7 @@ var coinbase = web3.eth.coinbase;
 console.log(coinbase);
 console.log(web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether'));
 
-var io = require('socket.io').listen(server);  //socket.io
+/*var io = require('socket.io').listen(server);  //socket.io
 
 
 io.sockets.on('connection', function(socket) {  
@@ -54,7 +54,7 @@ io.sockets.on('connection', function(socket) {
         console.log("User disconnected");
         clearInterval(refresh);
     });
-});
+});*/
 
 /*io.sockets.on('disconnect', function(socket) {  
     console.log('User disconnected');
