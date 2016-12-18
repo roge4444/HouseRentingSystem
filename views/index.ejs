@@ -12,8 +12,8 @@
   <div class="form">
    
     <p>Welcome to <%= title %></p>
-    <p>My Account: <b><h2 id="id"></h2></b></p><br>
-    <p>My Ether: <b><h2 id="coin"></h2></b></p><br>
+    <!--<p>My Account: <b><h2 id="id"></h2></b></p><br>
+    <p>My Ether: <b><h2 id="coin"></h2></b></p><br>-->
 <hr><b>
 <% if (user) { %>
   You are currently logged in as <%= user.username %><br> 
@@ -50,7 +50,7 @@
     }*/
     
     
-     var socket = io.connect('http://140.119.134.210:3000');
+     /*var socket = io.connect('http://140.119.134.210:3000');
      
      socket.on('index', function(data) {
             //$('#coin').text(data.coin);
@@ -76,7 +76,7 @@
 	
 	socket.on('disconnect',function(){
     
-	});
+	});*/
 	     
     
     

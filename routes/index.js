@@ -13,7 +13,7 @@ var coinbase = web3.eth.coinbase;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express',user : req.user });
+  res.render('index', { title: 'HouseRentingSystem',user : req.user });
 });
 
 router.get('/abc', function(req, res, next) {
