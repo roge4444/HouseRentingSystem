@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+p{
+	position: relative;
+	color:#484891;
+	font-family:cursive;
+	font-size: 30px;
+  	text-align: center;
+    z-index: 1;
+    max-width: 360px;
+    margin: 0 auto 100px;
+  	background: #FFFFFF;
+  	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+body {
+  	background: #336666; /* fallback for old browsers */
+  	background: -webkit-linear-gradient(right, #336666, #8DC26F);
+  	background: -moz-linear-gradient(right, #336666, #8DC26F);
+  	background: -o-linear-gradient(right, #336666, #8DC26F);
+ 	background: linear-gradient(to left, #336666, #8DC26F);
+ 	font-family: "Roboto", sans-serif;
+ 	-webkit-font-smoothing: antialiased;
+ 	-moz-osx-font-smoothing: grayscale;      
+}
+
+h2 {font-size: 30px;display : inline}
+a {
+  color: #00B7FF;
+}
+
+.form button {
+	font-family: "Roboto", sans-serif;
+  	text-transform: uppercase;
+  	outline: 0;
+  	text-align: center;
+  	background: #f3d42e;
+  	width: 100%;
+ 	border: 0;
+	padding: 15px;
+	color: #484891;
+    font-size: 20px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+	cursor: pointer;
+}
+
+.form button:disabled {
+  font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    text-align: center;
+    background: #ccc;
+    width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #484891;
+    font-size: 20px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.form input {
+	font-family: "Roboto", sans-serif;
+  	outline: 0;
+  	background: #f2f2f2;
+ 	width: 100%;
+  	border: 0;
+  	margin: 0 0 15px;
+  	padding: 15px;
+  	box-sizing: border-box;
+  	font-size: 20px;
+}
+.form input[type="submit"]{
+font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+  	position: relative;
+  	z-index: 1;
+  	background: #FFFFFF;
+  	max-width: 720px;
+  	margin: 50px auto 50px;
+  	padding: 45px;
+  	text-align: center;
+  	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
