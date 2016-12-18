@@ -45,17 +45,30 @@ router.post('/register', function(req, res, next) {
 });
 
 router.get('/login', function(req, res) {
-    res.render('login', { user : req.user });
+    res.render('login', { user : req.user ,error : "" });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+/*router.post('/login', passport.authenticate('local'), function(req, res) {
     res.redirect('/');
+});*/
+
+router.post('/login', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.render('login', { error : "Login fail.Please try again." }); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect('/');
+    });
+  })(req, res, next);
 });
 
 router.get('/logout', function(req, res) {
     req.logout();
     res.redirect('/');
 });
+
+
 
 router.get('/profile', function(req, res) {
     res.render('profile', { user : req.user });
@@ -73,25 +86,55 @@ router.post('/profile', passport.authenticate('local'),function(req, res, next) 
 });
 
 router.get('/houseinf', function(req, res) {
-    res.render('houseinf', { user : req.user });
+    res.render('houseinf', { user : req.user , error : "" , success : "" });
 });
 
-router.post('/houseinf', passport.authenticate('local'),function(req, res, next) {
+/*router.post('/houseinf', passport.authenticate('local'),function(req, res, next) {
 
-    var condition = {username: req.body.username},
+    var condition = {username: req.body.username },
         update = {$set: {rental: req.body.rental ,size: req.body.size}};
         
     Account.update(condition,update, function(err){
-        console.log('update error');
+        if(err){
+          console.log('update error');
+          return res.render('houseinf', { error : "Fail. Please check the password." });
+        }
     });
     res.send("<a href='/'>更新成功 點擊回主頁</a>");
+});*/
+
+
+router.post('/houseinf', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {   
+    
+    if (err) { return next(err); }
+    if (!user) { return res.render('houseinf', { user : req.user , error : "Fail. Please check the password." , success : ""}); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      var condition = {username: req.body.username },
+      update = {$set: {rental: req.body.rental ,size: req.body.size}};
+      Account.update(condition,update, function(err){
+          console.log('update error');
+          return res.render('houseinf', { user : req.user , error : "Fail. Please check the password." , success : ""});
+      });
+      res.render('houseinf', { user : req.user , error : "" , success : "Success.Click here to back to index." });
+    });
+  })(req, res, next);
 });
+
+
 
 
 
 router.get('/usersList', function(req, res) {
   Account.find(function(err, users) {
     res.render('usersList', { users:users});
+  });
+});
+
+router.get('/users', function(req, res) {
+  Account.find(function(err, users) {
+    res.json(users);
   });
 });
 

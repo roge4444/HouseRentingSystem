@@ -39,17 +39,16 @@ io.sockets.on('connection', function(socket) {
     
     socket.emit('index', {
 		'id': coinbase,
-	    'coin': web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether')
+	  'coin': web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether')
 	});
     
     var refresh = setInterval(function(){
     	//console.log('ID: '+coinbase);
     	//console.log('Coin: '+web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether'));
     	socket.emit('index', {
-	    	'id': coinbase,
-	        'coin': web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether')
+	       'coin': web3.fromWei(web3.eth.getBalance(coinbase).toString(),'ether')
 	    });
-    },3000);
+    },5000);
     
     socket.on('disconnect', function () {
         console.log("User disconnected");
