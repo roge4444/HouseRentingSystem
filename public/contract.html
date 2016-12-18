@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset-"utf8">
+	<title></title>
+<link rel="stylesheet" type="text/css" href="./web3.css">
+
+    
+
+   
+  </head>
+  <body>
+  	<div class="form">
+    <a href="/">homepage</a><br><hr>
+        <p>Renter : 租屋者<br> 
+        Tenant : 承租者<br>
+			 RentValue : test  <br> 
+			 Footage : test <br>   </p>      
+    
+    Renter : 0x0312Ad5F6b5206E136B74635024637Cefd167CB4<br> 
+    Renter Ether : <h2 id="coin1">ababab</h2><br>
+    Tenant : 0x48B9E77D96e0053D63F2A6c52Ef55BE61F7512dD<br>
+    Tenant Ether : <h2 id="coin2">ababab</h2><br>
+
+
+    Contract Address <br>
+    <input id="contractAddress" type="text" placeholder="Contract Address will be here." readonly />
+    Transaction Hash <br>
+    <input id="transactionHash" type="text" placeholder="Transaction Hash will be here." readonly />
+    Update Log <br>
+    <input id="log" type="text" placeholder="Update Log" readonly />
+    Check Log <br>
+    <input id="errorLog" type="text" placeholder="Check Log" readonly />
+    <input id="renterID" type="text" placeholder="Rent_ID">
+   
+    <button id="checkID1">Check Renter ID</button><br>
+
+    <button id="setRenterButton">create contract</button>
+    
+    <input id="tenantID" type="text" placeholder="Tenant_ID">
+    <button id="checkID2">Check Tenant_ID</button>
+    <button id="setTenantButton">sign contract</button>
+    
+    <input id="contractAmount" type="number" placeholder="設定金額">
+    <button id="executionButton">execute contract</button>
+    </div>
+    <hr>
+
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/web3/dist/web3.min.js"></script>
+    <script src="./js/HouseContract.js"></script>
+  
+
+  </body>
+</html>

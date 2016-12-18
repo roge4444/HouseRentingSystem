@@ -3,16 +3,17 @@
 <head>
   <meta charset-"utf8">
   <title></title>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+   <link rel="stylesheet" type="text/css" href="./uuu.css">
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
+<div class="form">
 <%if (error) { %>
   <h4> <%= error %> </h4>
   <% } %>
 <div class="container">
-  <h1>Register Page</h1>
-  <p class="lead">Say something worthwhile here.</p><br/>
+  <p>Register Page</p>
+  <p class="lead">HouseRenting Register System.</p><br/>
   <form role="form" action="/register" method="post" style="max-width: 300px;">
     <div class="form-group">
       <input type="text" name="username" placeholder="Enter Username" class="form-control"/>
@@ -26,10 +27,10 @@
     <div class="form-group">
       <input type="text" name="address" placeholder="Address" class="form-control"/>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>&nbsp;<a href="/">
+    <button type="submit" class="btn btn-default">Register</button>&nbsp;<a href="/">
       <button type="button" class="btn btn-primary">Cancel</button></a>
   </form>
 </div>
-
+</div>
 </body>
 </html>

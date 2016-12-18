@@ -70,11 +70,15 @@ router.get('/logout', function(req, res) {
 
 
 
-router.get('/profile', function(req, res) {
+/*router.get('/profile', function(req, res) {
     res.render('profile', { user : req.user });
+});*/
+
+router.get('/profile', function(req, res) {
+    res.render('profile', { user : req.user , error : "" , success : "" });
 });
 
-router.post('/profile', passport.authenticate('local'),function(req, res, next) {
+/*router.post('/profile', passport.authenticate('local'),function(req, res, next) {
 
     var condition = {username: req.body.username},
         update = {$set: {phonenum: req.body.phonenum,address: req.body.address}};
@@ -83,7 +87,27 @@ router.post('/profile', passport.authenticate('local'),function(req, res, next) 
         console.log('update error');
     });
     res.send("<a href='/'>更新成功 點擊回主頁</a>");
+});*/
+
+router.post('/profile', function(req, res, next) {
+  passport.authenticate('local', function(err, user, info) {   
+    
+    if (err) { return next(err); }
+    if (!user) { return res.render('profile', { user : req.user , error : "Fail. Please check the password." , success : ""}); }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      var condition = {username: req.body.username},
+        update = {$set: {phonenum: req.body.phonenum,address: req.body.address}};
+      Account.update(condition,update, function(err){
+          console.log('update error');
+          return res.render('profile', { user : req.user , error : "Fail. Please check the password." , success : ""});
+      });
+      res.render('profile', { user : req.user , error : "" , success : "Success.Click here to back to index." });
+    });
+  })(req, res, next);
 });
+
+
 
 router.get('/houseinf', function(req, res) {
     res.render('houseinf', { user : req.user , error : "" , success : "" });

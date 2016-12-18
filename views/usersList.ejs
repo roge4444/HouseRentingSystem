@@ -3,21 +3,23 @@
   <head>
   	<meta charset-"utf8">
 	<title></title>
-    
+  <link rel="stylesheet" type="text/css" href="./uuu.css"> 
    
   </head>
   <body>
-  	<a href="/">主頁</a>
+  <div class="form">
+  <input type="button" value="Homepage" onclick="self.location.href='/'"/>
   <% for(var i=0; i<users.length; i++) { %>
     <% if(users[i].rental){ %>
-       <p> -----------------------------------</p>
-       <p> Your name is <%= users[i].username %></p>   
-		   <p>	Your 租金 is <%= users[i].rental %>  </p>
-		   <p>	Your 坪數 is <%= users[i].size %>   </p>
-       <p> -----------------------------------</p>
+       <p> -----------------------
+         Name : <%= users[i].username %><br>   
+		   	 RentValue : <%= users[i].rental %> <br> 
+		   	 Footage : <%= users[i].size %>   
+        </p>
     <% } %>
        
     <% } %>
+    </div>
   </body>
 </html>
 

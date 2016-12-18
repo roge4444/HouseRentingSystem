@@ -3,17 +3,23 @@
 <head>
   <meta charset-"utf8">
   <title></title>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  <link rel="stylesheet" type="text/css" href="./uuu.css">
   <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-
+<div class="form">
+<%if (error) { %>
+  <h4> <%= error %> </h4>
+ <% } %>
+ <%if (success) { %>
+ <input type="button" value="<%= success %>" onclick="self.location.href='/'"/>
+ <% } %>
 <form method="post">
-  用户名：<input type="text" name="username" value= <%= user.username %>  /><br />
-  密碼確認：<input type="password" name="password" placeholder="Password" class="form-control"/> <br/>
-  電話：<input type="text" name="phonenum" value= <%= user.phonenum %> ><br />
-  住址：<input type="text" name="address" value= <%= user.address %> ><br />
-  <input type="submit" value="更新" />
+  Username：<input type="text" name="username" value= <%= user.username %>  /><br />
+  Password：<input type="password" name="password" placeholder="Password" /> <br/>
+  Tel：<input type="text" name="phonenum" value= <%= user.phonenum %> ><br />
+  Adress：<input type="text" name="address" value= <%= user.address %> ><br />
+  <input type="submit" value="Submit" />
 </form>
 
 

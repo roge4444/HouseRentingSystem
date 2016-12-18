@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset-"utf8">
+	 <title></title>
+    <link rel="stylesheet" type="text/css" href="./uuu.css">
+
+    
+
+   
+  </head>
+  <body>
+  	<div class="form">
+    <a href="/">homepage</a><br><hr>
+        <p>Name : <%= users[0].username %><br> 
+			 RentValue : <%= users[0].rental %>  <br> 
+			 Footage : <%= users[0].size %> <br>   </p>      
+    <input id="renterID" type="text" placeholder="Rent_ID">
+   
+    <button id="setrenter">create contract</button>
+    
+    <input id="tenantID" type="text" placeholder="Tenant_ID">
+    <button id="settenant">sign contract</button>
+    
+    <input id="rentvalue" type="number" placeholder="設定金額">
+    <button id="execution">execute contract</button>
+    </div>
+    <hr>
+    <label> LOG<label/>
+  
+
+  </body>
+</html>
